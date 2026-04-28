@@ -1,0 +1,35 @@
+name: Build addon
+
+on:
+  push:
+    tags:
+      - "*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build free@home addon
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build addon archive
+        run: npm run pack
+
+      - name: Upload addon archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: freeathome-esphome-coffee-addon
+          path: "*.tar"
+          if-no-files-found: error
