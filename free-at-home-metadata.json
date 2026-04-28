@@ -1,0 +1,26 @@
+{
+  "name": "ESPHome Coffee Machine",
+  "version": "1.0.0",
+  "id": "nl.flavorplus.freeathome.esphome.coffee",
+  "author": "flavorplus",
+  "url": "https://https://github.com/flavorplus",
+  "license": "MIT",
+  "description": "Creates a virtual free@home switch for an ESPHome coffee machine relay",
+  "type": "app",
+  "entryPoint": "build/main.js",
+  "parameters": {
+    "default": {
+      "name": "Coffee machine settings",
+      "items": {
+        "esphomeHost": {
+          "name": "ESPHome host or IP",
+          "type": "string"
+        },
+        "switchSlug": {
+          "name": "ESPHome switch slug",
+          "type": "string"
+        }
+      }
+    }
+  }
+}
